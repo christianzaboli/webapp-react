@@ -5,7 +5,7 @@ import axios from 'axios';
 
 import DefaultLayout from './layout/DefaultLayout'
 import HomePage from './Pages/HomePage'
-import MovieDetail from './components/MovieDetail';
+import MovieDetail from './Pages/MovieDetail';
 
 function App() {
 
