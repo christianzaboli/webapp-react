@@ -4,7 +4,7 @@ import MyHeader from "../MyHeader"
 export default function DefaultLayout() {
     return (
         <>
-            <MyHeader />
+            <MyHeader/>
             <main>
                 <Outlet />
             </main>

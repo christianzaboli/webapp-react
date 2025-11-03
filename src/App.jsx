@@ -5,6 +5,7 @@ import axios from 'axios';
 
 import DefaultLayout from './layout/DefaultLayout'
 import HomePage from './Pages/HomePage'
+import MovieDetail from './components/MovieDetail';
 
 function App() {
 
@@ -14,6 +15,8 @@ function App() {
         <Routes>
           <Route element={<DefaultLayout/>}>
             <Route index element={<HomePage/>}/>
+            <Route path='/movie/id' element={<MovieDetail/>}/>
+            
           </Route>
         </Routes>
       </BrowserRouter>
