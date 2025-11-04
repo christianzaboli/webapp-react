@@ -1,6 +1,6 @@
 import './App.css'
 import { BrowserRouter, Routes, Route } from 'react-router-dom'
-import { contextProvider } from './context/DefaultContext';
+import { ContextProvider } from './context/DefaultContext';
 import 'bootstrap/dist/css/bootstrap.css';
 
 import DefaultLayout from './layout/DefaultLayout'
@@ -10,7 +10,7 @@ import MovieDetail from './Pages/MovieDetail';
 function App() {
 
   return (
-    <contextProvider>
+    <ContextProvider>
       <BrowserRouter>
         <Routes>
           <Route element={<DefaultLayout/>}>
@@ -20,7 +20,7 @@ function App() {
           </Route>
         </Routes>
       </BrowserRouter>
-    </contextProvider>
+    </ContextProvider>
     
   )
 }

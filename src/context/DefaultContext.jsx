@@ -1,23 +1,34 @@
-import { createContext, useContext, useState, useEffect, } from "react";
+import { createContext, useContext, useState, useEffect } from "react";
 import axios from "axios";
 
-const DefaultContext = createContext()
+const DefaultContext = createContext();
+const apiDB = import.meta.env.VITE_DB_HOST;
 
-function contextProvider({ children }) {
-    // db
-    const apiDB = import.meta.env.DB_HOST
+function ContextProvider({ children }) {
+  // db
+  const [movies, setMovies] = useState(); // array dell'index dei film
+  function fetchMovies() {
+    axios
+      .get(apiDB + "movies")
+      .then((res) => {
+        setMovies(res.data);
+        console.log(res.data);
+      })
+      .catch((err) => console.log(err));
+  }
+  useEffect(() => {
+    fetchMovies();
+  }, []);
 
-    const [movies, setMovies] = useState()
-
-    return (
-        <DefaultContext.Provider value={{ movies }}>
-            {children}
-        </DefaultContext.Provider>
-    )
+  return (
+    <DefaultContext.Provider value={{ movies }}>
+      {children}
+    </DefaultContext.Provider>
+  );
 }
 function useDefaultContext() {
-    const context = useContext(DefaultContext)
-    return context;
+  const context = useContext(DefaultContext);
+  return context;
 }
 
-export { contextProvider, useDefaultContext }
+export { ContextProvider, useDefaultContext };
