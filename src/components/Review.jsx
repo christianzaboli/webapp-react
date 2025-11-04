@@ -1,8 +1,12 @@
-export default function Review() {
-    return (
-        <div>
-            <h4>Autore review</h4>
-            <p>parole parole parole</p>
-        </div>
-    )
+export default function Review({ prop }) {
+  const { name, vote, text } = prop;
+  return (
+    <div className="card">
+      <div className="card-body">
+        <h5 className="card-title">{name}</h5>
+        <p className="card-text">{text}</p>
+        <p className="card-text">Vote: {vote}</p>
+      </div>
+    </div>
+  );
 }

@@ -1,12 +1,14 @@
 import MovieCard from "../components/MovieCard";
 import { useState, useEffect } from "react";
 import axios from "axios";
+import { useDefaultContext } from "../context/DefaultContext";
 
 export default function HomePage() {
+  const { apiDB } = useDefaultContext();
   const [movies, setMovies] = useState([]); // array dell'index dei film
   const fetchMovies = () => {
     axios
-      .get("http://localhost:3000/api/movies")
+      .get(apiDB + "movies")
       .then((res) => {
         setMovies(res.data);
       })
@@ -23,6 +25,7 @@ export default function HomePage() {
       );
     });
   };
+
   return (
     <div className="container">
       <h1 className="text-center fw-light">List of films</h1>
