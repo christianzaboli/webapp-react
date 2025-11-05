@@ -7,7 +7,7 @@ export default function Review({ prop }) {
         <h5 className="card-title">{name}</h5>
         <p className="card-text">{text}</p>
         <div className="card-text">
-          Vote: <StarRating rating={vote} />
+          <StarRating rating={vote} />
         </div>
       </div>
     </div>

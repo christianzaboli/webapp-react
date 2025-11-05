@@ -19,7 +19,7 @@ export default function HomePage() {
   const renderMovie = () => {
     return movies.map((film) => {
       return (
-        <div className="col gap-3" key={film.id}>
+        <div className="col gap-3 mb-3" key={film.id}>
           <MovieCard prop={film} />
         </div>
       );
@@ -27,9 +27,11 @@ export default function HomePage() {
   };
 
   return (
-    <div className="container">
-      <h1 className="text-center fw-light">List of films</h1>
-      <div className="row row-cols-3 mt-3">{renderMovie()}</div>
-    </div>
+    <>
+      <div className="container">
+        <h1 className="fw-light mb-4">List of films</h1>
+        <div className="row row-cols-3 mt-3">{renderMovie()}</div>
+      </div>
+    </>
   );
 }

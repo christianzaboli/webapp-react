@@ -2,12 +2,12 @@ export default function StarRating(props) {
   const { rating } = props;
 
   const totalRating = 5;
-  const ratingFixed = Math.ceil(rating / 2);
+  const ratingFixed = Math.ceil(rating);
 
   return (
     <div>
       <p>
-        <strong>Rating: </strong>
+        <strong>Vote: </strong>
         <span className="text-warning">
           {[...Array(totalRating)].map((x, index) => (
             <span key={index}>

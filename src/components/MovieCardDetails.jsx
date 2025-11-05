@@ -1,7 +1,7 @@
 import { Link } from "react-router-dom";
 
 export default function MovieCardDetails({ prop }) {
-  const { title, director, abstract, image } = prop;
+  const { title, director, abstract, image, average_vote } = prop;
   return (
     <>
       <div className="card">
@@ -17,13 +17,18 @@ export default function MovieCardDetails({ prop }) {
                 <small className="text-body-secondary">Directed by </small>
                 {director}
               </p>
+              <p>
+                Average rating: <span className="fw-bold">{average_vote}</span>
+              </p>
             </div>
           </div>
         </div>
       </div>
-      <Link to={"/"} className="btn btn-primary alin-content-end">
-        Go back
-      </Link>
+      <div className="d-flex justify-content-end align-items-center mt-5">
+        <Link to={"/"} className="btn btn-secondary ms-5">
+          Go back
+        </Link>
+      </div>
     </>
   );
 }
