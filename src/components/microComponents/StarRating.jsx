@@ -2,7 +2,7 @@ export default function StarRating(props) {
   const { rating } = props;
 
   const totalRating = 5;
-  const ratingFixed = Math.ceil(rating);
+  const ratingFixed = Math.round(rating);
 
   return (
     <div>

@@ -38,11 +38,11 @@ export default function MovieDetail() {
   // RENDERING PAGINA
   return (
     <div className="container">
-      <div className="mb-5">{renderMovie()}</div>
+      <div className="mb-4">{renderMovie()}</div>
       {renderReviews()}
-      <p>Aggiungi la tua review</p>
+
       <ReviewForm idProp={id} reRender={fetchDetails} />
-      <Link to={"/"} className="btn btn-secondary ms-5">
+      <Link to={"/"} className="btn btn-secondary justify-content-end my-4">
         Go back
       </Link>
     </div>
