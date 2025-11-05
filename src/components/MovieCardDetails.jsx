@@ -24,11 +24,7 @@ export default function MovieCardDetails({ prop }) {
           </div>
         </div>
       </div>
-      <div className="d-flex justify-content-end align-items-center mt-5">
-        <Link to={"/"} className="btn btn-secondary ms-5">
-          Go back
-        </Link>
-      </div>
+      <div className="d-flex justify-content-end align-items-center mt-5"></div>
     </>
   );
 }

@@ -8,7 +8,7 @@ export default function HomePage() {
   const [movies, setMovies] = useState([]); // array dell'index dei film
   const fetchMovies = () => {
     axios
-      .get(apiDB + "movies")
+      .get(apiDB)
       .then((res) => {
         setMovies(res.data);
       })

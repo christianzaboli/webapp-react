@@ -1,4 +1,4 @@
-import { Link, useParams } from "react-router-dom";
+import { useParams, Link } from "react-router-dom";
 import { useState, useEffect } from "react";
 import axios from "axios";
 import { useDefaultContext } from "../context/DefaultContext";
@@ -11,7 +11,7 @@ export default function MovieDetail() {
   const [movieDetailed, setMovieDetailed] = useState([]); // array dell'index dei film
   const fetchDetails = () => {
     axios
-      .get(`${apiDB}movies/${id}`)
+      .get(`${apiDB}${id}`)
       .then((res) => {
         setMovieDetailed(res.data);
         console.log(res.data);
@@ -20,10 +20,12 @@ export default function MovieDetail() {
   };
   useEffect(fetchDetails, []);
 
+  // content
   const renderMovie = () => {
     return <MovieCardDetails prop={movieDetailed} />;
   };
 
+  // reviews
   const renderReviews = () => {
     return movieDetailed.review?.map((rev) => {
       return (
@@ -34,10 +36,15 @@ export default function MovieDetail() {
     });
   };
 
+  // RENDERING PAGINA
   return (
     <div className="container">
       <div className="mb-5">{renderMovie()}</div>
       {renderReviews()}
+      <p>Aggiungi la tua review</p>
+      <Link to={"/"} className="btn btn-secondary ms-5">
+        Go back
+      </Link>
     </div>
   );
 }
