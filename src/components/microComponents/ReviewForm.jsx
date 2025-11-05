@@ -1,9 +1,10 @@
 import { useState } from "react";
 import axios from "axios";
-import { useDefaultContext } from "../../context/DefaultContext";
+import { useParams } from "react-router-dom";
 
-export default function ReviewForm() {
-  const apiDB = useDefaultContext();
+export default function ReviewForm({ reRender }) {
+  const { id } = useParams();
+  const apiDB = `http://localhost:3000/api/movies/${id}/reviews`;
   const initialVals = {
     name: "",
     vote: 1,
@@ -11,15 +12,15 @@ export default function ReviewForm() {
   };
   const [formData, setFormData] = useState(initialVals);
 
-  function handleSubmit(e) {
+  const handleSubmit = (e) => {
     e.preventDefault();
     axios
-      .post(`${apiDB}/${id}/reviews`, formData, {
+      .post(apiDB, formData, {
         headers: { "Content-Type": "application/json" },
       })
-      .then(setFormData(initialVals))
+      .then(setFormData(initialVals), reRender())
       .catch((err) => console.log(err));
-  }
+  };
   function setFieldValue(e) {
     const { value, name } = e.target;
     setFormData({ ...formData, [name]: value });
@@ -54,9 +55,7 @@ export default function ReviewForm() {
           onChange={setFieldValue}
           required
         />
-        <button className="btn btn-primary" type="submit">
-          Invia
-        </button>
+        <button className="btn btn-primary">Invia</button>
       </form>
     </div>
   );

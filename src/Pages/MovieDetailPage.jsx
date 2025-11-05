@@ -1,12 +1,11 @@
 import { useParams, Link } from "react-router-dom";
 import { useState, useEffect } from "react";
 import axios from "axios";
-import { useDefaultContext } from "../context/DefaultContext";
 import Review from "../components/Review";
 import MovieCardDetails from "../components/MovieCardDetails";
 import ReviewForm from "../components/microComponents/ReviewForm";
 export default function MovieDetail() {
-  const { apiDB } = useDefaultContext();
+  const apiDB = "http://localhost:3000/api/movies/";
   const { id } = useParams();
   const [movieDetailed, setMovieDetailed] = useState([]); // array dell'index dei film
   const fetchDetails = () => {
@@ -42,7 +41,7 @@ export default function MovieDetail() {
       <div className="mb-5">{renderMovie()}</div>
       {renderReviews()}
       <p>Aggiungi la tua review</p>
-      <ReviewForm />
+      <ReviewForm idProp={id} reRender={fetchDetails} />
       <Link to={"/"} className="btn btn-secondary ms-5">
         Go back
       </Link>
