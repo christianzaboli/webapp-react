@@ -4,7 +4,7 @@ import axios from "axios";
 import { useDefaultContext } from "../context/DefaultContext";
 import Review from "../components/Review";
 import MovieCardDetails from "../components/MovieCardDetails";
-
+import ReviewForm from "../components/microComponents/ReviewForm";
 export default function MovieDetail() {
   const { apiDB } = useDefaultContext();
   const { id } = useParams();
@@ -42,6 +42,7 @@ export default function MovieDetail() {
       <div className="mb-5">{renderMovie()}</div>
       {renderReviews()}
       <p>Aggiungi la tua review</p>
+      <ReviewForm />
       <Link to={"/"} className="btn btn-secondary ms-5">
         Go back
       </Link>
