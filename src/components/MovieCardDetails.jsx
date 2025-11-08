@@ -9,7 +9,7 @@ export default function MovieCardDetails({ prop }) {
           </div>
           <div className="col-md-8">
             <div className="card-body">
-              <h5 className="card-title">{title}</h5>
+              <h3 className="card-title">{title}</h3>
               <p className="card-text lead">{abstract}</p>
               <p className="card-text">
                 <small className="text-body-secondary">

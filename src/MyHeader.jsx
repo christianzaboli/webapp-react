@@ -1,7 +1,11 @@
+import { NavLink } from "react-router-dom";
 export default function MyHeader() {
   return (
-    <header className="container my-4">
-      <h1 className="display-1">Movies</h1>
+    <header>
+      <nav className="navbar bg-body-tertiary">
+        <NavLink to={"/"}>Home</NavLink>
+        <NavLink to={"/movies/add"}>Add a Movie</NavLink>
+      </nav>
     </header>
   );
 }

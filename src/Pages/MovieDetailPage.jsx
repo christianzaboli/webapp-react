@@ -1,21 +1,31 @@
 import { useParams, Link } from "react-router-dom";
 import { useState, useEffect } from "react";
 import axios from "axios";
+
+// import useContext
+import { useDefaultContext } from "../contexts/DefaultContext";
+
+// import componenti
 import Review from "../components/Review";
 import MovieCardDetails from "../components/MovieCardDetails";
 import ReviewForm from "../components/microComponents/ReviewForm";
+
 export default function MovieDetail() {
+  const { setIsLoading } = useDefaultContext();
   const apiDB = "http://localhost:3000/api/movies/";
   const { id } = useParams();
+
   const [movieDetailed, setMovieDetailed] = useState([]); // array dell'index dei film
   const fetchDetails = () => {
+    setIsLoading(true); // attivo il loading
     axios
       .get(`${apiDB}${id}`)
       .then((res) => {
         setMovieDetailed(res.data);
         console.log(res.data);
       })
-      .catch((err) => console.log(err));
+      .catch((err) => console.log(err))
+      .finally(() => setIsLoading(false)); // disattivo il loading a fine chiamata
   };
   useEffect(fetchDetails, []);
 
